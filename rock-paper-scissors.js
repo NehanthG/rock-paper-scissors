@@ -19,6 +19,23 @@ function pickComputerMove(){
          ties:0,
          wins:0
               }; 
+let isAutoPlaying= false;
+let intervalId;
+ function autoPlay(){
+     if(!isAutoPlaying){
+          document.querySelector('.auto-play-button').innerText='Stop Auto Play';
+     intervalId=setInterval(function(){
+          const playerMove=pickComputerMove();
+          playGame(playerMove);
+     },1000);
+     isAutoPlaying=true;
+     }
+     else{
+          document.querySelector('.auto-play-button').innerHTML='Auto Play';
+          clearInterval(intervalId);
+          isAutoPlaying=false;
+     }
+}
  function playGame(playerMove){
     const computerMove=pickComputerMove();
     
